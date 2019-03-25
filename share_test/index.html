@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Social Media Button</title>
+	<style>
+	.iShare{margin:0 auto;width: 400px;position: relative;}
+		.iShare a i.facebook{
+			background:url(images/Facebook.png) no-repeat top center;
+		}
+		.iShare a i.twitter{
+			background:url(images/TW.png) no-repeat top center;
+		}
+		.iShare a i.googleplus{
+			background:url(images/google.png) no-repeat top center;
+		}
+		.iShare a i.email{
+			background:url(images/email.png) no-repeat top center;
+		}
+		.iShare a i.link{
+			background:url(images/copy-link.png) no-repeat top center;
+		}
+		.iShare a i.iconfont{
+			float: left;
+			margin-right: 20px;
+			width: 40px;
+			height: 40px;
+			background-size:100% 100%;
+		}
+		.iShare i:hover{
+			opacity: 0.7
+		}
+		#link_box{position:absolute;left:0;top:0;z-index: -1;opacity: 0;}
+
+	</style>
+</head>
+<body>
+	<div class="iShare iShare1">
+		<a href="#" class="iShare_facebook"><i class="iconfont facebook" style="vertical-align: 1px;"></i></a>
+		<a href="#" class="iShare_twitter"><i class="iconfont twitter"></i></a>
+		<a href="#" class="iShare_googleplus"><i class="iconfont googleplus" style="vertical-align: -1px;"></i></a>
+		<a href="javascript:;" class="iShare_email"><i class="iconfont email" style="vertical-align: -2px;"></i></a>
+		<a href="javascript:;" class="iShare_link"><i class="iconfont link" style="vertical-align: 2px;"></i></a>
+		<input type="text" id="link_box" value="" />
+	</div>
+	
+	<script src="jquery-1.11.3.js"></script>
+	<script src="smtp.js"></script>
+	<script type="text/javascript">
+	var iShare_config = {
+		container:'.iShare1',
+		config:{
+        	title: 'Blog Detail Page',
+        	description: 'LIGHTEN UP: THE BEST WORKS AT I LIGHT SINGAPORE',
+        	url: window.location.href,
+        	WXoptions:{
+        	    evenType: 'click',
+        	    isTitleVisibility: true,
+        	    title: '二维码标题',
+        	    isTipVisibility: true,
+        	    tip: '二维码描述文本',
+        	    qrcodeW: '120',
+        	    qrcodeH: '120',
+        	    qrcodeBgc: '#e1bee7',
+        	    qrcodeFgc: '#4a148c',
+        	    bgcolor: '#9c27b0'
+        	}
+    	}
+	};
+	$('.iShare_link').click(function(){
+		$('#link_box').val(window.location.href)
+		var copyobject=document.getElementById("link_box");
+        copyobject.select();
+        document.execCommand("Copy");
+        alert("Link has been copied and you can paste"); 
+	})
+	$('.email').click(function(){
+		Email.send({
+	    	Host : "smtp.dorisxu.com",
+    		Username : "doris.xuv@gmail.com",
+    		Password : "protein328",
+	    	To : '465975393@qq.com',
+	    	From : "doris.xuv@gmail.com",
+	    	Subject : "This is the subject",
+	    	Body : "And this is the body"
+		}).then(
+	 		 message => alert(message)
+		);		
+	});
+
+
+	</script><script src="smtp.js"></script>
+	<script type="text/javascript" src="iShare_tidy.js"></script>
+</body>
+</html>
