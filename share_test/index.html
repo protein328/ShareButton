@@ -39,7 +39,7 @@
 		<a href="#" class="iShare_facebook"><i class="iconfont facebook" style="vertical-align: 1px;"></i></a>
 		<a href="#" class="iShare_twitter"><i class="iconfont twitter"></i></a>
 		<a href="#" class="iShare_googleplus"><i class="iconfont googleplus" style="vertical-align: -1px;"></i></a>
-		<a href="javascript:;" class="iShare_email"><i class="iconfont email" style="vertical-align: -2px;"></i></a>
+		<a href="#" class="iShare_email"><i class="iconfont email" style="vertical-align: -2px;"></i></a>
 		<a href="javascript:;" class="iShare_link"><i class="iconfont link" style="vertical-align: 2px;"></i></a>
 		<input type="text" id="link_box" value="" />
 	</div>
@@ -74,7 +74,7 @@
         document.execCommand("Copy");
         alert("Link has been copied and you can paste"); 
 	})
-	$('.email').click(function(){
+	/*$('.email').click(function(){
 		Email.send({
 	    	Host : "smtp.dorisxu.com",
     		Username : "doris.xuv@gmail.com",
@@ -85,11 +85,19 @@
 	    	Body : "And this is the body"
 		}).then(
 	 		 message => alert(message)
-		);		
-	});
+		);	
 
-
-	</script><script src="smtp.js"></script>
+	});*/
+	function ishare_email(){
+		var subject = document.title;
+		var link = window.location.href;
+		var body = subject + ': ' + link;
+		var href = 'mailto:youremail@xxx.com?CC=&Subject='+subject+'&Body='+body;
+		$('.iShare_email').attr('href',href);
+	}
+	ishare_email();
+	</script>
+	<script src="smtp.js"></script>
 	<script type="text/javascript" src="iShare_tidy.js"></script>
 </body>
 </html>
