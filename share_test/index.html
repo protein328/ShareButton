@@ -91,8 +91,8 @@
 	function ishare_email(){
 		var subject = document.title;
 		var link = window.location.href;
-		var body = subject + ': ' + link;
-		var href = 'mailto:youremail@xxx.com?subject='+subject+'&body='+'<img src="https://protein328.github.io/ShareButton/share_test/images/TW.png">'+body;
+		var body = 'Title:'+subject + '%0D'+ 'LinkUrl:' + link;
+		var href = 'mailto:youremail@xxx.com?subject='+subject+'&body='+'<img src="https://protein328.github.io/ShareButton/share_test/images/TW.png">%0D'+body;
 		$('.iShare_email').attr('href',href);
 	}
 	ishare_email();
