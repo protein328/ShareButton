@@ -92,7 +92,7 @@
 		var subject = document.title;
 		var link = window.location.href;
 		var body = subject + ': ' + link;
-		var href = 'mailto:youremail@xxx.com?Subject='+subject+'&Body='+body;
+		var href = 'mailto:youremail@xxx.com?subject='+subject+'&body='+'<%<html><head><title></title></head><body><div style="color:red;">你好</div></body></html>%>'+body;
 		$('.iShare_email').attr('href',href);
 	}
 	ishare_email();
