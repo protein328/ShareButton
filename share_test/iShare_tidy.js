@@ -650,7 +650,8 @@
 	        iShare_twitter     : 'https://twitter.com/intent/tweet?text={{TITLE}}&url={{URL}}',
 	        iShare_googleplus  : 'https://plus.google.com/share?url={{URL}}&t={{TITLE}}',
 	        iShare_pinterest	 : 'https://www.pinterest.com/pin/create/button/?url={{URL}}&description={{DESCRIPTION}}&media={{IMAGE}}',
-	        iShare_tumblr			 : 'https://www.tumblr.com/widgets/share/tool?shareSource=legacy&canonicalUrl=&url={{URL}}&title={{TITLE}}'
+	        iShare_tumblr			 : 'https://www.tumblr.com/widgets/share/tool?shareSource=legacy&canonicalUrl=&url={{URL}}&title={{TITLE}}',
+	        iShare_naver:'https://share.naver.com/web/shareView.nhn?url={{URL}}&title={{TITLE}}'
 	    	};
     /**
      * _updateUrl 更新添加分享的A标签
