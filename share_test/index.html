@@ -4,7 +4,41 @@
 	<meta charset="UTF-8">
 	<title>Social Media Button</title>
 	<style>
-	.iShare{margin:0 auto;width: 400px;position: relative;}
+	#iShare_box{
+		width: 1050px;
+		position: relative;
+	}
+	.iShare{
+		width: 400px;
+		margin:0 auto;
+		position: absolute;
+		left: 0;
+		right: 0;
+		display: flex;
+	}
+	#iShare_box:before{
+		content:"";
+		display: block;
+		height: 0;
+		width: 27%;
+		border-top:solid 1px #d9d9d9;
+		float: left;
+		margin-top:1.4rem;
+	}
+	#iShare_box:after{
+		content:"";
+		display: block;
+		height: 0;
+		width: 27%;
+		border-top:solid 1px #d9d9d9;
+		float: right;
+		margin-top:1.4rem;
+	}
+	.iShare a{
+		display: block;
+		flex:.25;
+		text-align: center;
+	}
 		.iShare a i.facebook{
 			background:url(images/Facebook.png) no-repeat top center;
 		}
@@ -18,30 +52,60 @@
 			background:url(images/email.png) no-repeat top center;
 		}
 		.iShare a i.link{
-			background:url(images/copy-link.png) no-repeat top center;
+			background:url(images/copy-link.png) no-repeat center center;
+		}
+		.iShare a i.naver{
+			background:url(images/naver.png) no-repeat top center;			
 		}
 		.iShare a i.iconfont{
-			float: left;
-			margin-right: 20px;
-			width: 40px;
-			height: 40px;
+			display: inline-block;
+			/* margin-right: 20px; */
+			width: 2.8rem;
+			height: 2.8rem;
 			background-size:100% 100%;
+			border-radius: 50%
+		}
+		.iShare a i.link{
+			background-size:80% 80%;
 		}
 		.iShare i:hover{
 			opacity: 0.7
 		}
 		#link_box{position:absolute;left:0;top:0;z-index: -1;opacity: 0;}
+		.list_box{position: relative;}
+		.list_box li{position: absolute;width: 100px;height: 20px;background:#666;}
+		body{
+			--top:30px;
+		}
+		.list_box li:nth-child(1){
+			top:calc(var(--top) * 1);
+		}
+		.list_box li:nth-child(2){
+			top:calc(var(--top) * 2);
+		}
+		.list_box li:nth-child(3){
+			top:calc(var(--top) * 3);
+		}
+		.list_box li:nth-child(4){
+			top:calc(var(--top) * 4);
+		}
+		.list_box li:nth-child(5){
+			top:calc(var(--top) * 5);
+		}
 
 	</style>
 </head>
 <body>
-	<div class="iShare iShare1">
-		<a href="#" class="iShare_facebook"><i class="iconfont facebook" style="vertical-align: 1px;"></i></a>
-		<a href="#" class="iShare_twitter"><i class="iconfont twitter"></i></a>
-		<a href="#" class="iShare_googleplus"><i class="iconfont googleplus" style="vertical-align: -1px;"></i></a>
-		<a href="#" class="iShare_email"><i class="iconfont email" style="vertical-align: -2px;"></i></a>
-		<a href="javascript:;" class="iShare_link"><i class="iconfont link" style="vertical-align: 2px;"></i></a>
-		<input type="text" id="link_box" value="" />
+	<div id="iShare_box">
+		<div class="iShare iShare1">
+			<a href="#" title="facebook" class="iShare_facebook"><i class="iconfont facebook" style="vertical-align: 1px;"></i></a>
+			<a href="#" title="twitter" class="iShare_twitter"><i class="iconfont twitter"></i></a>
+			<a href="#" title="googleplus" class="iShare_googleplus"><i class="iconfont googleplus" style="vertical-align: -1px;"></i></a>
+			<a href="#" title="email" class="iShare_email"><i class="iconfont email" style="vertical-align: -2px;"></i></a>
+			<a href="javascript:;" title="copy linkage" class="iShare_link"><i class="iconfont link" style="vertical-align: 2px;"></i></a>
+			<a href="#" class="iShare_naver"><i class="iconfont naver"></i></a>
+			<input type="text" id="link_box" value="" />
+		</div>
 	</div>
 	
 	<script src="jquery-1.11.3.js"></script>
@@ -52,19 +116,7 @@
 		config:{
         	title: 'Blog Detail Page',
         	description: 'LIGHTEN UP: THE BEST WORKS AT I LIGHT SINGAPORE',
-        	url: window.location.href,
-        	WXoptions:{
-        	    evenType: 'click',
-        	    isTitleVisibility: true,
-        	    title: '二维码标题',
-        	    isTipVisibility: true,
-        	    tip: '二维码描述文本',
-        	    qrcodeW: '120',
-        	    qrcodeH: '120',
-        	    qrcodeBgc: '#e1bee7',
-        	    qrcodeFgc: '#4a148c',
-        	    bgcolor: '#9c27b0'
-        	}
+        	url: window.location.href
     	}
 	};
 	$('.iShare_link').click(function(){
@@ -74,26 +126,13 @@
         document.execCommand("Copy");
         alert("Link has been copied and you can paste"); 
 	})
-	/*$('.email').click(function(){
-		Email.send({
-	    	Host : "smtp.dorisxu.com",
-    		Username : "doris.xuv@gmail.com",
-    		Password : "protein328",
-	    	To : '465975393@qq.com',
-	    	From : "doris.xuv@gmail.com",
-	    	Subject : "This is the subject",
-	    	Body : "And this is the body"
-		}).then(
-	 		 message => alert(message)
-		);	
-
-	});*/
 	function ishare_email(){
 		var subject = document.title;
 		var link = window.location.href;
 		var body = 'Title:'+subject + '%0D'+ 'LinkUrl:' + link;
-		var href = 'mailto:youremail@xxx.com?subject='+subject+'&body='+'<img src="https://protein328.github.io/ShareButton/share_test/images/TW.png">%0D'+body;
+		var href = 'mailto:objectmail@xxx.com?subject='+subject+'&body='+'<img src="https://protein328.github.io/ShareButton/share_test/images/TW.png">%0D'+body;
 		$('.iShare_email').attr('href',href);
+
 	}
 	ishare_email();
 	</script>
